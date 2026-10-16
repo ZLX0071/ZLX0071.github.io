@@ -777,7 +777,8 @@
         #p-riskfit   { --acc: var(--pink); }
         #p-livingprd { --acc: var(--cyan); }
         #p-creditlife{ --acc: var(--purple); }
-        #p-github    { --acc: var(--yellow); }
+        #p-immune    { --acc: var(--green); }
+        #p-github    { --acc: var(--yellow); grid-column: 1 / -1; }
 
         /* ===========================
            EXPERIENCE — LEVEL PROGRESS
@@ -853,43 +854,32 @@
         }
 
         /* ===========================
-           SKILLS — INVENTORY
+           SKILLS — SKILL TREE
            =========================== */
-        .skills-grid {
+        .skill-groups {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1.1rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.8rem;
         }
 
-        .skill-chip {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.7rem 0.9rem;
+        .skill-group {
+            padding: 1.4rem 1.4rem 1.6rem;
+        }
+
+        .skill-group-title {
             font-family: var(--font-zh-pixel);
-            font-size: 13px;
-            color: var(--ink-dim);
-            background: rgba(10, 1, 24, 0.5);
-            box-shadow:
-                0 -2px 0 0 color-mix(in srgb, var(--acc) 55%, transparent),
-                0 2px 0 0 color-mix(in srgb, var(--acc) 55%, transparent),
-                -2px 0 0 0 color-mix(in srgb, var(--acc) 55%, transparent),
-                2px 0 0 0 color-mix(in srgb, var(--acc) 55%, transparent);
-            transition: transform 0.15s steps(3), box-shadow 0.15s steps(3), color 0.2s;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--acc);
+            margin-bottom: 1rem;
         }
 
-        .skill-chip:hover {
-            transform: translateY(-3px);
-            color: var(--ink);
-            box-shadow:
-                0 -2px 0 0 var(--acc),
-                0 2px 0 0 var(--acc),
-                -2px 0 0 0 var(--acc),
-                2px 0 0 0 var(--acc),
-                0 0 16px color-mix(in srgb, var(--acc) 40%, transparent);
+        .skill-group .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
-
-        .skill-chip .skill-icon { font-size: 1.15rem; }
 
         /* ===========================
            CONTACT — INSERT COIN
@@ -1035,7 +1025,7 @@
             .hero-horizon { bottom: 30%; }
             .about-grid { grid-template-columns: 1fr; gap: 2rem; }
             .projects-grid { grid-template-columns: 1fr; }
-            .skills-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.9rem; }
+            .skill-groups { grid-template-columns: 1fr; gap: 1.1rem; }
             .contact-card { padding: 1.8rem 1.2rem; }
             .container { padding: 0 1.25rem; }
             .section { padding: 4rem 0; }
@@ -1162,20 +1152,20 @@
 
                 <div class="about-stats">
                     <div class="stat-card px-card reveal">
-                        <div class="stat-number">3+</div>
-                        <div class="stat-label">落地产品</div>
-                    </div>
-                    <div class="stat-card px-card reveal">
                         <div class="stat-number">2</div>
-                        <div class="stat-label">年产品方向探索</div>
+                        <div class="stat-label">独立开发 AI 产品</div>
                     </div>
                     <div class="stat-card px-card reveal">
-                        <div class="stat-number">AI</div>
-                        <div class="stat-label">核心赛道</div>
+                        <div class="stat-number">22K+</div>
+                        <div class="stat-label">病理图像判读</div>
                     </div>
                     <div class="stat-card px-card reveal">
-                        <div class="stat-number">PM</div>
-                        <div class="stat-label">用户驱动</div>
+                        <div class="stat-number">94</div>
+                        <div class="stat-label">条自建评测集</div>
+                    </div>
+                    <div class="stat-card px-card reveal">
+                        <div class="stat-number">36h</div>
+                        <div class="stat-label">RiskFit 从 0 到上线</div>
                     </div>
                 </div>
             </div>
@@ -1234,21 +1224,44 @@
 
                 <!-- Project 3 -->
                 <div class="project-card px-card reveal" id="p-creditlife">
-                    <div class="quest">SIDE QUEST</div>
-                    <div class="project-icon">📱</div>
-                    <h3>CreditLife 工作台原型</h3>
-                    <span class="project-role">UX 设计</span>
+                    <div class="quest">MAIN QUEST</div>
+                    <div class="project-icon">🛡️</div>
+                    <h3>CreditLife-Agent 信贷合规多 Agent 客服</h3>
+                    <span class="project-role">独立开发</span>
                     <p>
-                        前端高保真原型设计，涵盖产品工作台 Dashboard、数据看板与业务流管理界面。
-                        采用 glassmorphism 设计语言，注重信息层级与操作效率。
+                        面向银行客服与合规部门的 ToB AI 客服平台：覆盖“信用卡 + 贷后催收”双业务线，
+                        三路意图识别 · 多 Agent 路由 · RAG · 三层记忆；催收红线拆解为 15 条可执行规则做双层护栏，
+                        以“合规红线命中 = 0”为第一护栏指标；自建 94 条分层评测集与五维 LLM-as-Judge，
+                        12 条对抗用例全部正确处理，意图组级准确率 77.8%（信用卡线 93.3%）。
                     </p>
                     <div class="project-tags">
-                        <span class="px-tag">原型设计</span>
-                        <span class="px-tag">Figma</span>
-                        <span class="px-tag">UI/UX</span>
+                        <span class="px-tag">Multi-Agent</span>
+                        <span class="px-tag">合规护栏</span>
+                        <span class="px-tag">LLM-as-Judge</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/ZLX0071" target="_blank" rel="noopener">📁 GITHUB</a>
+                        <a href="https://github.com/ZLX0071/CreditLife-Agent" target="_blank" rel="noopener">📁 GITHUB</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card px-card reveal" id="p-immune">
+                    <div class="quest">MAIN QUEST</div>
+                    <div class="project-icon">🔬</div>
+                    <h3>免疫细胞 AI 辅助判读工具</h3>
+                    <span class="project-role">团队核心负责人</span>
+                    <p>
+                        与悉尼大学医学院合作，主导 6 人团队开发 H&amp;E 病理图像 3 类免疫细胞（B 细胞 / T 细胞 / 巨噬细胞）
+                        判读流水线，覆盖 22,000+ 张图像；以“辅助而非替代”为产品边界，内嵌低置信人工复核机制与 Grad-CAM 可解释归因；
+                        5:1 类别不均衡下横向评测 5 种深度架构，以宏 F1 相对提升 7.3% 选定双模型软投票，交付可运行 Streamlit Demo。
+                    </p>
+                    <div class="project-tags">
+                        <span class="px-tag">医疗 AI</span>
+                        <span class="px-tag">Grad-CAM 可解释</span>
+                        <span class="px-tag">Human-in-the-loop</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ZLX0071/immune-cell-classifier" target="_blank" rel="noopener">📁 GITHUB</a>
                     </div>
                 </div>
 
@@ -1285,34 +1298,42 @@
             <div class="timeline reveal">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-date">2026 — PRESENT</div>
-                    <h3>AI PM 方向求职</h3>
-                    <div class="timeline-org">深圳 / 香港</div>
-                    <p>专注 AI Agent × 金融科技方向，积极寻找产品经理实习机会。持续参与 AI 产品项目实践，保持对行业前沿的敏感度。</p>
+                    <div class="timeline-date">2026.08 — PRESENT</div>
+                    <h3>香港科技大学 · 金融科技理学硕士</h3>
+                    <div class="timeline-org">Master of Science in Financial Technology · 中国香港</div>
+                    <p>系统学习金融科技核心课程，同步推进 AI Agent × 金融科技方向的产品实践。</p>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-date">2025 — 2026</div>
-                    <h3>大湾区金融科技探索</h3>
-                    <div class="timeline-org">课程项目 & 个人实践</div>
-                    <p>参与 MFIT5003 小组项目（HKD/USD 汇率分析），独立完成数据处理、统计建模与双语报告撰写。探索 AI 在金融场景的产品化落地。</p>
+                    <div class="timeline-date">2026.02 — 2026.10</div>
+                    <h3>AI 产品研发冲刺</h3>
+                    <div class="timeline-org">CreditLife-Agent · RiskFit · 免疫细胞判读工具</div>
+                    <p>独立完成信贷合规多 Agent 客服系统与组合风险体检台（已上线），并作为核心负责人带队完成医学影像判读工具——覆盖从痛点调研、PRD、评测体系到上线数据迭代的完整闭环。</p>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-date">2024 — 2025</div>
-                    <h3>产品思维 & 技术基础构建</h3>
-                    <div class="timeline-org">自我提升</div>
-                    <p>系统学习产品方法论（需求分析、用户研究、A/B 测试、PRD 撰写），同步提升 AI / 数据领域技术认知，搭建个人产品作品集。</p>
+                    <div class="timeline-date">2024.12 — 2025.02</div>
+                    <h3>中国科学院计算技术研究所 · 科研实习生</h3>
+                    <div class="timeline-org">红外卫星图像识别 · 北京</div>
+                    <p>在 SIRST、Open-SIRST-v2 等 3 个基准数据集上完成深度学习模型复现与评估；参与红外图像视觉对话的多模态大语言模型内部测试。</p>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-date">2023 — 2024</div>
-                    <h3>进入 AI 产品方向</h3>
-                    <div class="timeline-org">方向探索</div>
-                    <p>明确 AI 产品经理为职业目标，开始关注大模型应用层机会。参与 AI 相关课程与实践，积累行业认知。</p>
+                    <div class="timeline-date">2024.07 — 2024.11</div>
+                    <h3>金融与政策数据科研</h3>
+                    <div class="timeline-org">期权市场泡沫推断 · 控酒政策评估</div>
+                    <p>搭建 S&amp;P 500 期权数据自动化流水线，与经济学研究员共同识别投机性泡沫早期预警指标；地理编码 40,000+ 场所数据支撑政策量化研究。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2024.02 — 2026.06</div>
+                    <h3>悉尼大学 · 计算机学士</h3>
+                    <div class="timeline-org">计算数据科学方向 · 澳大利亚悉尼</div>
+                    <p>GPA 3.5/4.0，获 Academic Merit Prize 优秀学生奖学金（2024–2025）。</p>
                 </div>
             </div>
         </div>
@@ -1322,21 +1343,81 @@
     <section class="section" id="skills">
         <div class="container">
             <div class="section-label reveal">sudo skills --list</div>
-            <h2 class="section-title reveal">专业能力<span class="en">SKILL INVENTORY</span></h2>
+            <h2 class="section-title reveal">专业能力<span class="en">SKILL TREE</span></h2>
 
-            <div class="skills-grid">
-                <div class="skill-chip reveal"><span class="skill-icon">📋</span> 产品设计</div>
-                <div class="skill-chip reveal"><span class="skill-icon">🔍</span> 需求分析</div>
-                <div class="skill-chip reveal"><span class="skill-icon">🤖</span> AI Agent 产品</div>
-                <div class="skill-chip reveal"><span class="skill-icon">📊</span> 数据分析</div>
-                <div class="skill-chip reveal"><span class="skill-icon">👥</span> 用户研究</div>
-                <div class="skill-chip reveal"><span class="skill-icon">🧪</span> A/B 测试</div>
-                <div class="skill-chip reveal"><span class="skill-icon">📝</span> PRD 撰写</div>
-                <div class="skill-chip reveal"><span class="skill-icon">🎨</span> 原型设计</div>
-                <div class="skill-chip reveal"><span class="skill-icon">📈</span> 项目管理</div>
-                <div class="skill-chip reveal"><span class="skill-icon">💰</span> 金融科技</div>
-                <div class="skill-chip reveal"><span class="skill-icon">🧠</span> 大模型应用</div>
-                <div class="skill-chip reveal"><span class="skill-icon">📐</span> RAG 技术</div>
+            <div class="skill-groups">
+                <div class="skill-group px-card reveal" style="--acc: var(--pink)">
+                    <div class="skill-group-title">🤖 Agent 搭建</div>
+                    <div class="skill-tags">
+                        <span class="px-tag">多 Agent 编排与路由</span>
+                        <span class="px-tag">三路意图识别</span>
+                        <span class="px-tag">RAG 链路设计</span>
+                        <span class="px-tag">多层记忆</span>
+                        <span class="px-tag">Function Calling / MCP</span>
+                        <span class="px-tag">Skill 热加载</span>
+                        <span class="px-tag">Prompt 工程</span>
+                    </div>
+                </div>
+
+                <div class="skill-group px-card reveal" style="--acc: var(--cyan)">
+                    <div class="skill-group-title">🧪 Agent 评测（Evals）</div>
+                    <div class="skill-tags">
+                        <span class="px-tag">分层评测集</span>
+                        <span class="px-tag">LLM-as-Judge 量规</span>
+                        <span class="px-tag">双 Judge 校准</span>
+                        <span class="px-tag">人工抽标</span>
+                        <span class="px-tag">对抗用例构造</span>
+                        <span class="px-tag">badcase 回归</span>
+                    </div>
+                </div>
+
+                <div class="skill-group px-card reveal" style="--acc: var(--purple)">
+                    <div class="skill-group-title">📋 产品能力</div>
+                    <div class="skill-tags">
+                        <span class="px-tag">PRD 撰写（ADR / 埋点表）</span>
+                        <span class="px-tag">用户研究</span>
+                        <span class="px-tag">竞品分析</span>
+                        <span class="px-tag">需求优先级排序</span>
+                        <span class="px-tag">埋点 → 看数 → 改版 → 指标</span>
+                    </div>
+                </div>
+
+                <div class="skill-group px-card reveal" style="--acc: var(--yellow)">
+                    <div class="skill-group-title">🛠 平台与工具</div>
+                    <div class="skill-tags">
+                        <span class="px-tag">Coze</span>
+                        <span class="px-tag">Dify</span>
+                        <span class="px-tag">Figma / 墨刀</span>
+                        <span class="px-tag">飞书</span>
+                        <span class="px-tag">Jira</span>
+                        <span class="px-tag">Xmind / Mermaid</span>
+                        <span class="px-tag">Claude Code / Codex</span>
+                    </div>
+                </div>
+
+                <div class="skill-group px-card reveal" style="--acc: var(--green)">
+                    <div class="skill-group-title">💻 数据与工程</div>
+                    <div class="skill-tags">
+                        <span class="px-tag">Python</span>
+                        <span class="px-tag">Next.js / TypeScript</span>
+                        <span class="px-tag">SQL</span>
+                        <span class="px-tag">Java</span>
+                        <span class="px-tag">R</span>
+                        <span class="px-tag">PyTorch</span>
+                        <span class="px-tag">ChromaDB / Redis</span>
+                        <span class="px-tag">Docker</span>
+                        <span class="px-tag">Git</span>
+                    </div>
+                </div>
+
+                <div class="skill-group px-card reveal" style="--acc: var(--pink)">
+                    <div class="skill-group-title">🗣 语言能力</div>
+                    <div class="skill-tags">
+                        <span class="px-tag">普通话（母语）</span>
+                        <span class="px-tag">英语（流利）</span>
+                        <span class="px-tag">粤语（基础）</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
